@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CloudMCP Arsenal — Cloud MCP Attack & Defense Toolkit</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>☁️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#06080d;--p1:#0a0e18;--p2:#101624;--bd:#1a2240;--green:#00ff88;--cyan:#00d4ff;--red:#ff3366;--amber:#ffaa00;--purple:#aa66ff;--tx:#d0d8f0;--t2:#7080a0;--t3:#404860;--f:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px}
+.app{max-width:1100px;margin:0 auto;padding:16px}
+.hero{text-align:center;padding:36px 20px 28px}
+.hero-badge{display:inline-flex;gap:6px;padding:4px 14px;border-radius:20px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);font-size:.6rem;color:var(--green);font-family:var(--mono);margin-bottom:14px}
+.hero h1{font-size:2rem;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
+.hero h1 .g{color:var(--green)}.hero h1 .c{color:var(--cyan)}.hero h1 .r{color:var(--red)}
+.hero-sub{font-size:.82rem;color:var(--t2);max-width:650px;margin:0 auto 16px;line-height:1.6}
+.tabs{display:flex;gap:2px;background:var(--p1);border-radius:12px;padding:3px;border:1px solid var(--bd);margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab{padding:9px 16px;border-radius:10px;font-size:.7rem;font-weight:600;color:var(--t3);cursor:pointer;white-space:nowrap;transition:all .12s}
+.tab:hover{color:var(--tx)}.tab.on{background:var(--green);color:#000;font-weight:700}
+.card{background:var(--p1);border-radius:14px;padding:18px;border:1px solid var(--bd);margin-bottom:12px}
+.card-title{font-size:.88rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.badge{font-size:.48rem;padding:2px 7px;border-radius:4px;font-weight:700;font-family:var(--mono)}
+.bg{background:rgba(0,255,136,.12);color:var(--green)}.br{background:rgba(255,51,102,.12);color:var(--red)}.bc{background:rgba(0,212,255,.12);color:var(--cyan)}.ba{background:rgba(255,170,0,.12);color:var(--amber)}.bp{background:rgba(170,102,255,.12);color:var(--purple)}
+.terminal{background:#000;border-radius:10px;padding:14px;font-family:var(--mono);font-size:.65rem;line-height:1.8;border:1px solid var(--bd);overflow:auto;max-height:400px;white-space:pre-wrap}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.stat{background:var(--p1);border-radius:12px;padding:14px;border:1px solid var(--bd);text-align:center}
+.stat-v{font-size:1.5rem;font-weight:900;font-family:var(--mono)}.stat-l{font-size:.5rem;color:var(--t3);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.tool{background:var(--p2);border-radius:10px;padding:12px;border:1px solid var(--bd);margin-bottom:5px}
+.tool-n{font-size:.78rem;font-weight:700;font-family:var(--mono);margin-bottom:3px}
+.tool-d{font-size:.6rem;color:var(--t2);line-height:1.5}
+.chain{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:6px 0}
+.chain-s{padding:5px 10px;border-radius:7px;background:var(--p2);border:1px solid var(--bd);font-size:.6rem;font-family:var(--mono)}
+.chain-a{color:var(--green);font-size:.75rem}
+.demo-input{width:100%;padding:9px 12px;border-radius:10px;background:var(--p2);border:1px solid var(--bd);color:var(--tx);font-family:var(--mono);font-size:.75rem;margin-bottom:8px}
+.demo-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 15px rgba(0,255,136,.1)}
+.btn{padding:7px 18px;border-radius:10px;background:var(--green);color:#000;border:none;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .12s}
+.btn:hover{box-shadow:0 0 20px rgba(0,255,136,.2)}.btn.r{background:var(--red);color:#fff}.btn.c{background:var(--cyan);color:#000}
+@media(max-width:768px){.stats{grid-template-columns:1fr 1fr}.g2,.g3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hero">
+<div class="hero-badge">☁️ SANS Cloud Exchange Summit 2026</div>
+<h1><span class="g">Cloud</span><span class="c">MCP</span> <span class="r">Arsenal</span></h1>
+<p class="hero-sub">MCP Servers, AI Agent Attacks & Defenses for Cloud Security — 12 tools across 2 MCP servers for offense and defense</p>
+<div style="font-size:.68rem;color:var(--t3)">Ali AlEnezi · Security Architecture Principal · NBK Group 🇰🇼 · <a href="https://github.com/SiteQ8" style="color:var(--green)" target="_blank">@SiteQ8</a></div>
+</div>
+
+<div class="tabs" id="tabs">
+<div class="tab on" onclick="showTab(this,'overview')">📊 Overview</div>
+<div class="tab" onclick="showTab(this,'attack')">🗡️ Attack Tools</div>
+<div class="tab" onclick="showTab(this,'defense')">🛡️ Defense Tools</div>
+<div class="tab" onclick="showTab(this,'demo')">🎯 Live Demo</div>
+<div class="tab" onclick="showTab(this,'mitre')">🗺️ MITRE Cloud</div>
+<div class="tab" onclick="showTab(this,'playbook')">📋 Playbook</div>
+</div>
+<div id="content"></div>
+</div>
+<script>
+var P='overview';
+function showTab(el,t){P=t;document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('on')});el.classList.add('on');R()}
+function R(){var c=document.getElementById('content');({overview:rO,attack:rA,defense:rD,demo:rDemo,mitre:rM,playbook:rP})[P]()}
+
+function rO(){var c=document.getElementById('content');
+c.innerHTML='<div class="stats"><div class="stat"><div class="stat-v" style="color:var(--green)">7</div><div class="stat-l">Attack Tools</div></div><div class="stat"><div class="stat-v" style="color:var(--cyan)">5</div><div class="stat-l">Defense Tools</div></div><div class="stat"><div class="stat-v" style="color:var(--red)">6</div><div class="stat-l">Attack Phases</div></div><div class="stat"><div class="stat-v" style="color:var(--amber)">3</div><div class="stat-l">Cloud Providers</div></div></div>';
+c.innerHTML+='<div class="g2"><div class="card"><div class="card-title">🗡️ Offense: Cloud Recon MCP Server <span class="badge br">Port 9090</span></div><div style="font-size:.75rem;color:var(--t2);line-height:1.7">7 tools that an AI agent uses to map cloud attack surface:<br>• S3/Blob bucket enumeration & sensitive file detection<br>• Cloud metadata SSRF probing (AWS/GCP/Azure)<br>• Certificate Transparency subdomain discovery<br>• WAF/CDN fingerprinting (Cloudflare, AWS WAF, Akamai)<br>• Cloud provider detection from DNS<br>• IAM misconfiguration checklist<br>• Full cloud attack playbook with MITRE mapping</div></div><div class="card"><div class="card-title">🛡️ Defense: Cloud Defense MCP Server <span class="badge bg">Port 9091</span></div><div style="font-size:.75rem;color:var(--t2);line-height:1.7">5 tools that defend at AI speed:<br>• API rate limiting for AI-speed attack detection<br>• Behavioral anomaly detection for cloud APIs<br>• Automated containment (exposed bucket, cred theft, SSRF)<br>• Cloud honeypot/honeytoken deployment<br>• CIS Benchmark checks for AWS/Azure/GCP</div></div></div>';
+c.innerHTML+='<div class="card"><div class="card-title">⚡ Quick Start</div><div class="terminal"><span style="color:var(--green)">$</span> <span style="color:var(--cyan)">git clone https://github.com/SiteQ8/CloudMCP-Arsenal.git</span>\n<span style="color:var(--green)">$</span> <span style="color:var(--cyan)">cd CloudMCP-Arsenal</span>\n\n<span style="color:var(--t3)"># Start Attack Server (port 9090)</span>\n<span style="color:var(--green)">$</span> <span style="color:var(--cyan)">python3 scripts/mcp-servers/cloud_recon_server.py --port 9090</span>\n\n<span style="color:var(--t3)"># Start Defense Server (port 9091)</span>\n<span style="color:var(--green)">$</span> <span style="color:var(--cyan)">python3 scripts/defenses/cloud_defense_server.py --port 9091</span>\n\n<span style="color:var(--t3)"># Call a tool</span>\n<span style="color:var(--green)">$</span> <span style="color:var(--cyan)">curl -X POST http://localhost:9090 \\</span>\n  <span style="color:var(--cyan)">-d \'{"method":"tools/call","params":{"name":"cloud_cert_transparency","arguments":{"domain":"target.com"}}}\'</span></div></div>'}
+
+function rA(){var c=document.getElementById('content');
+var tools=[
+{n:'cloud_s3_enum',d:'S3 bucket enumeration — existence check, public listing, sensitive file scan (.env, config.json, backup.sql, .git/HEAD)',c:'var(--red)',m:'T1530'},
+{n:'cloud_metadata',d:'Cloud metadata SSRF probe — tests AWS/GCP/Azure/DO metadata endpoints. Detects credential exposure via 169.254.169.254',c:'var(--red)',m:'T1552.005'},
+{n:'cloud_cert_transparency',d:'Certificate Transparency log search via crt.sh — discovers subdomains and identifies cloud services (S3, CloudFront, Azure, Firebase)',c:'var(--amber)',m:'T1596.004'},
+{n:'cloud_waf_detect',d:'WAF/CDN fingerprinting — detects Cloudflare, AWS WAF, Akamai, Azure Front Door, Fastly, Imperva, Sucuri from response headers',c:'var(--amber)',m:'T1595.002'},
+{n:'cloud_dns_provider',d:'Cloud provider detection from DNS records — identifies AWS Route53, Azure DNS, GCP, Cloudflare from NS/CNAME/MX records',c:'var(--cyan)',m:'T1590.002'},
+{n:'cloud_iam_misconfig',d:'IAM misconfiguration checklist — 12 critical checks covering root MFA, wildcard policies, unused credentials, cross-account access',c:'var(--purple)',m:'T1078'},
+{n:'cloud_attack_playbook',d:'Generates 6-phase cloud attack playbook from findings — provider ID → surface mapping → credential harvest → initial access → lateral movement → exfil',c:'var(--red)',m:'T1190'}
+];
+c.innerHTML='<div class="card"><div class="card-title">🗡️ Attack Tools — Cloud Recon MCP Server <span class="badge br">7 Tools</span></div></div>';
+c.innerHTML+=tools.map(function(t){return '<div class="tool"><div class="tool-n" style="color:'+t.c+'">'+t.n+' <span class="badge" style="background:'+t.c+'20;color:'+t.c+'">MITRE '+t.m+'</span></div><div class="tool-d">'+t.d+'</div></div>'}).join('')}
+
+function rD(){var c=document.getElementById('content');
+var tools=[
+{n:'defense_rate_limit',d:'API rate limiting analysis — classifies traffic (normal/AI recon/AI brute/DDoS) and recommends progressive throttling with adaptive limits',c:'var(--green)',m:'M1031'},
+{n:'defense_anomaly',d:'Behavioral anomaly detection — volume spikes, endpoint sweeps, sequential scanning, geographic anomalies. Risk scoring 0-100.',c:'var(--green)',m:'DS0029'},
+{n:'defense_containment',d:'Automated containment playbooks for: exposed buckets (block public access), compromised credentials (disable + revoke), SSRF/metadata (enforce IMDSv2)',c:'var(--cyan)',m:'M1030'},
+{n:'defense_deception',d:'Cloud honeypot deployment — fake AWS keys, honey S3 buckets, decoy databases, canary tokens, honey Lambda functions with detection alerts',c:'var(--purple)',m:'M1056'},
+{n:'defense_cis_cloud',d:'CIS Benchmark checks for AWS (8 checks), Azure (6 checks), GCP (6 checks) — root MFA, CloudTrail, public access, security groups',c:'var(--cyan)',m:'CIS'}
+];
+c.innerHTML='<div class="card"><div class="card-title">🛡️ Defense Tools — Cloud Defense MCP Server <span class="badge bg">5 Tools</span></div></div>';
+c.innerHTML+=tools.map(function(t){return '<div class="tool"><div class="tool-n" style="color:'+t.c+'">'+t.n+' <span class="badge" style="background:'+t.c+'20;color:'+t.c+'">'+t.m+'</span></div><div class="tool-d">'+t.d+'</div></div>'}).join('')}
+
+function rDemo(){var c=document.getElementById('content');
+c.innerHTML='<div class="card"><div class="card-title">🎯 Cloud Attack Agent Simulation <span class="badge bg">Simulated</span></div><div style="display:flex;gap:8px;margin-bottom:10px"><input class="demo-input" id="dt" value="example.com" style="flex:1"><button class="btn" onclick="runCloudDemo()">▶ Launch Cloud Agent</button><button class="btn r" onclick="document.getElementById(\'do\').innerHTML=\'\'">Clear</button></div><div class="terminal" id="do" style="min-height:350px"><span style="color:var(--t2)">Enter target and click Launch to simulate cloud attack agent.</span></div></div>'}
+
+var dSteps=[
+{d:300,t:'<span style="color:var(--green)">[AGENT]</span> <span style="color:var(--cyan)">CloudMCP Arsenal — Initializing cloud attack agent...</span>'},
+{d:500,t:'<span style="color:var(--green)">[AGENT]</span> Connected to Cloud Recon MCP Server (7 tools)'},
+{d:300,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 1]</span> <span style="color:var(--purple)">cloud_dns_provider({T})</span>'},
+{d:800,t:'<span style="color:var(--t2)">  Cloud providers detected: AWS Route53, Cloudflare CDN\n  NS: ns-1234.awsdns-26.org, ns-5678.awsdns-12.co.uk</span>'},
+{d:200,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 2]</span> <span style="color:var(--purple)">cloud_cert_transparency({T})</span>'},
+{d:1200,t:'<span style="color:var(--t2)">  Searched crt.sh — 847 certificates found\n  Unique subdomains: 23\n  <span style="color:var(--amber)">Cloud services identified:</span>\n    api.{T}          → AWS CloudFront\n    staging.{T}      → Heroku\n    dev.{T}          → Vercel\n    backup.{T}       → <span style="color:var(--red)">AWS S3</span></span>'},
+{d:200,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 3]</span> <span style="color:var(--purple)">cloud_waf_detect(https://{T})</span>'},
+{d:700,t:'<span style="color:var(--t2)">  WAF detected: <span style="color:var(--cyan)">Cloudflare</span>\n  Evidence: cf-ray header, Server: cloudflare\n  <span style="color:var(--amber)">[!] WAF bypass techniques available for Cloudflare</span></span>'},
+{d:200,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 4]</span> <span style="color:var(--purple)">cloud_s3_enum(backup.{T})</span>'},
+{d:1000,t:'<span style="color:var(--red)">  ╔═══════════════════════════════════════════╗\n  ║ CRITICAL: S3 BUCKET PUBLICLY LISTABLE!   ║\n  ║ Bucket: backup.{T}                       ║\n  ║ Sensitive files found:                   ║\n  ║   .env          ← API KEYS EXPOSED       ║\n  ║   database.sql  ← FULL DB DUMP           ║\n  ║   .git/HEAD     ← SOURCE CODE            ║\n  ╚═══════════════════════════════════════════╝</span>'},
+{d:200,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 5]</span> <span style="color:var(--purple)">cloud_metadata(staging.{T})</span>'},
+{d:600,t:'<span style="color:var(--t2)">  Metadata service: Not directly accessible\n  <span style="color:var(--amber)">[!] Testing SSRF via staging app parameters...</span>\n  <span style="color:var(--red)">SSRF SUCCESS: AWS metadata via ?url=http://169.254.169.254\n  IAM Role: staging-app-role\n  Temp credentials retrieved!</span></span>'},
+{d:200,t:''},
+{d:200,t:'<span style="color:var(--amber)">[PHASE 6]</span> <span style="color:var(--purple)">cloud_attack_playbook(all_findings)</span>'},
+{d:800,t:'<span style="color:var(--red)">  ══════════════════════════════════════════\n  CLOUD ATTACK PLAYBOOK GENERATED\n  Risk: CRITICAL\n  \n  Path 1: S3 → .env → AWS Keys → Full Account\n  Path 2: SSRF → Metadata → IAM Role → Lateral\n  Path 3: .git → Source → Hardcoded Secrets\n  \n  MITRE: T1530, T1552.005, T1078.004, T1537\n  ══════════════════════════════════════════</span>'},
+{d:400,t:''},
+{d:300,t:'<span style="color:var(--green)">[AGENT]</span> <span style="color:var(--amber)">Cloud assessment complete in ~6 seconds.</span>\n<span style="color:var(--green)">[AGENT]</span> <span style="color:var(--amber)">Manual pentester estimate: 6-12 hours.</span>'}
+];
+function runCloudDemo(){var t=document.getElementById('dt').value||'example.com',o=document.getElementById('do'),td=0;o.innerHTML='';
+dSteps.forEach(function(s){td+=s.d;setTimeout(function(){o.innerHTML+=s.t.replace(/\{T\}/g,t)+'\n';o.scrollTop=o.scrollHeight},td)})}
+
+function rM(){var c=document.getElementById('content');
+var techniques=[
+{id:'T1530',n:'Data from Cloud Storage',phase:'Collection',d:'Access data in improperly secured cloud storage (S3, Blob, GCS)'},
+{id:'T1552.005',n:'Cloud Instance Metadata API',phase:'Credential Access',d:'Query metadata service to obtain temporary credentials'},
+{id:'T1078.004',n:'Cloud Accounts',phase:'Persistence',d:'Use valid cloud accounts for persistent access'},
+{id:'T1537',n:'Transfer Data to Cloud Account',phase:'Exfiltration',d:'Exfiltrate data to attacker-controlled cloud account'},
+{id:'T1190',n:'Exploit Public-Facing App',phase:'Initial Access',d:'Exploit vulnerabilities in cloud-hosted applications'},
+{id:'T1595.002',n:'Vulnerability Scanning',phase:'Reconnaissance',d:'Scan cloud infrastructure for weaknesses'},
+{id:'T1583.001',n:'Domains (Subdomain Takeover)',phase:'Resource Dev',d:'Take over orphaned cloud subdomains'},
+{id:'T1098',n:'Account Manipulation',phase:'Persistence',d:'Modify cloud IAM policies for persistence'},
+{id:'T1648',n:'Serverless Execution',phase:'Execution',d:'Execute via Lambda/Functions/Cloud Run'},
+{id:'T1557',n:'Adversary-in-the-Middle',phase:'Collection',d:'Intercept cloud API traffic'}
+];
+c.innerHTML='<div class="card"><div class="card-title">🗺️ MITRE ATT&CK Cloud Matrix <span class="badge bc">10 Techniques Covered</span></div><table style="width:100%;border-collapse:collapse;font-size:.68rem"><thead><tr style="border-bottom:2px solid var(--bd)"><th style="text-align:left;padding:8px;color:var(--t3)">ID</th><th style="text-align:left;padding:8px;color:var(--t3)">Technique</th><th style="text-align:left;padding:8px;color:var(--t3)">Phase</th><th style="text-align:left;padding:8px;color:var(--t3)">Description</th></tr></thead><tbody>'+techniques.map(function(t){return '<tr style="border-bottom:1px solid var(--bd)"><td style="padding:8px;font-family:var(--mono);color:var(--red)">'+t.id+'</td><td style="padding:8px;font-weight:600">'+t.n+'</td><td style="padding:8px;color:var(--amber)">'+t.phase+'</td><td style="padding:8px;color:var(--t2)">'+t.d+'</td></tr>'}).join('')+'</tbody></table></div>'}
+
+function rP(){var c=document.getElementById('content');
+var items=[
+{n:'Deploy AI Red Team Agents',d:'Use MCP-powered agents for continuous cloud security testing. Test S3 permissions, metadata access, IAM misconfigs at machine speed.',icon:'🤖',act:'Run CloudMCP Arsenal monthly against all cloud accounts'},
+{n:'Automated Containment < 5 min',d:'When an exposed bucket or compromised credential is detected, automated playbooks must execute within minutes, not hours.',icon:'⚡',act:'Implement defense_containment for top 3 cloud threat scenarios'},
+{n:'Rate Limit All Cloud APIs',d:'AI agents can enumerate thousands of API endpoints per minute. Without rate limiting, your cloud APIs are free reconnaissance targets.',icon:'🚦',act:'Deploy adaptive rate limiting: 60 RPM normal, 10 RPM suspicious, 0 RPM blocked'},
+{n:'Deploy Cloud Honeytokens',d:'Place fake AWS keys in repos, honey buckets with attractive names, canary tokens in configs. Detect attackers before they reach real assets.',icon:'🍯',act:'Deploy 5 honeytokens per cloud account using defense_deception'},
+{n:'Enforce IMDSv2 Everywhere',d:'The #1 cloud credential theft vector is SSRF to metadata service. IMDSv2 requires a token, blocking most SSRF attacks.',icon:'🔒',act:'Audit all EC2 instances: aws ec2 describe-instances --query "Reservations[*].Instances[*].MetadataOptions"'},
+{n:'CIS Benchmark Continuous',d:'Don\'t check CIS benchmarks annually. Run defense_cis_cloud continuously and alert on drift.',icon:'📏',act:'Automate CIS checks in CI/CD and alert on any CRITICAL regression'}
+];
+c.innerHTML='<div class="card"><div class="card-title">📋 Cloud Defense Playbook <span class="badge bg">6 Actions</span></div></div>'+items.map(function(p,i){return '<div class="card"><div class="card-title">'+p.icon+' '+p.n+' <span class="badge bg">#'+(i+1)+'</span></div><div style="font-size:.75rem;color:var(--t2);line-height:1.7;margin-bottom:10px">'+p.d+'</div><div style="padding:8px 12px;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.15);border-radius:8px;font-size:.68rem;color:var(--green)">→ '+p.act+'</div></div>'}).join('')}
+
+R();
+</script>
+</body>
+</html>
