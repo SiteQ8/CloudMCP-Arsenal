@@ -1,6 +1,6 @@
 <div align="center">
 
-# ☁️ CloudMCP Arsenal
+# CloudMCP Arsenal
 
 ### MCP Servers, AI Agent Attacks & Defenses for Cloud Security
 
@@ -15,9 +15,9 @@
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-Two MCP servers — one for offense, one for defense:
+Two MCP servers, one for offense, one for defense:
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -41,7 +41,7 @@ Two MCP servers — one for offense, one for defense:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/SiteQ8/CloudMCP-Arsenal.git
@@ -72,7 +72,7 @@ curl -X POST http://localhost:9091 \
 
 ---
 
-## 🗡️ Attack Tools (7)
+## Attack Tools (7)
 
 | Tool | Description | MITRE |
 |------|-------------|-------|
@@ -84,7 +84,7 @@ curl -X POST http://localhost:9091 \
 | `cloud_iam_misconfig` | IAM misconfiguration checklist (12 checks) | T1078 |
 | `cloud_attack_playbook` | 6-phase cloud attack playbook generator | T1190 |
 
-## 🛡️ Defense Tools (5)
+## Defense Tools (5)
 
 | Tool | Description | Framework |
 |------|-------------|-----------|
@@ -96,18 +96,18 @@ curl -X POST http://localhost:9091 \
 
 ---
 
-## 📋 6-Point Cloud Defense Playbook
+## 6-Point Cloud Defense Playbook
 
-1. **Deploy AI Red Team Agents** — Run CloudMCP monthly against all accounts
-2. **Automated Containment < 5 min** — Playbooks for top 3 threat scenarios
-3. **Rate Limit All Cloud APIs** — Adaptive: 60→10→0 RPM
-4. **Deploy Cloud Honeytokens** — 5 per cloud account
-5. **Enforce IMDSv2 Everywhere** — Block SSRF credential theft
-6. **CIS Benchmarks Continuous** — Alert on drift, not annual check
+1. **Deploy AI Red Team Agents**: Run CloudMCP monthly against all accounts
+2. **Automated Containment < 5 min**: Playbooks for top 3 threat scenarios
+3. **Rate Limit All Cloud APIs**: Adaptive: 60→10→0 RPM
+4. **Deploy Cloud Honeytokens**: 5 per cloud account
+5. **Enforce IMDSv2 Everywhere**: Block SSRF credential theft
+6. **CIS Benchmarks Continuous**: Alert on drift, not annual check
 
 ---
 
-## 👤 Author
+## Author
 
 **Ali AlEnezi** · [@SiteQ8](https://github.com/SiteQ8) · [3li.info](https://3li.info)
 
