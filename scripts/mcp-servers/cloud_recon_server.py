@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CloudMCP Arsenal — Cloud Reconnaissance MCP Server
+CloudMCP Arsenal: Cloud Reconnaissance MCP Server
 Exposes cloud-specific security tools for AI agent consumption.
 
 Tools:
@@ -13,7 +13,7 @@ Tools:
   cloud_subdomain   - Cloud-aware subdomain enumeration
   cloud_waf_detect  - WAF/CDN detection & fingerprinting
 
-Author: Ali AlEnezi (@SiteQ8) — NBK Group
+Author: Ali AlEnezi (@SiteQ8)
 """
 
 import json, socket, ssl, subprocess, urllib.request, urllib.error
@@ -26,7 +26,7 @@ VERSION = "1.0"
 # ═══ CLOUD TOOLS ═══
 
 def cloud_s3_enum(bucket_name):
-    """Enumerate S3 bucket — check existence, permissions, listing"""
+    """Enumerate S3 bucket: check existence, permissions, listing"""
     results = {"bucket": bucket_name, "findings": [], "risk": "UNKNOWN"}
     urls = [
         f"https://{bucket_name}.s3.amazonaws.com",
@@ -70,7 +70,7 @@ def cloud_s3_enum(bucket_name):
     return results
 
 def cloud_metadata(target_url):
-    """Probe cloud metadata service — SSRF attack vector"""
+    """Probe cloud metadata service: SSRF attack vector"""
     results = {"target": target_url, "findings": [], "cloud_provider": "unknown"}
 
     metadata_endpoints = {

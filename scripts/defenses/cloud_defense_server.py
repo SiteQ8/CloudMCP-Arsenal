@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CloudMCP Arsenal — Cloud Defense MCP Server
+CloudMCP Arsenal: Cloud Defense MCP Server
 AI-powered defense tools that respond at machine speed.
 
 Tools:
@@ -11,7 +11,7 @@ Tools:
   defense_threat_intel  - Map findings to threat intelligence
   defense_compliance    - Check cloud config against CIS Benchmarks
 
-Author: Ali AlEnezi (@SiteQ8) — NBK Group
+Author: Ali AlEnezi (@SiteQ8)
 """
 
 import json
